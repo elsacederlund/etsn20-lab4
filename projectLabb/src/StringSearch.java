@@ -1,13 +1,24 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 
 public class StringSearch{
     public static void main(String[] args) {
 
-        String pattern = args[0];
-        String filename = args[1];
+        Scanner scan = new Scanner(System.in); 
+        String input = scan.nextLine(); 
+
+        String[] words = input.split(" ");
+
+        if(words.length != 3 || words[0] != "search"){
+            System.out.println("Please write in the format; 'search', 'pattern', 'filename'"); 
+            return;  
+        }
+
+        String pattern = words[1];
+        String filename = words[2];
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
